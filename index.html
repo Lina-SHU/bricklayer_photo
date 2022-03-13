@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>瀑布版型</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.2/bricklayer.min.css">
+  <link rel="stylesheet" href="all.css">
+  
+</head>
+<body>
+  <div class="container">
+    <div class="bricklayer"></div>
+  </div>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.2/bricklayer.min.js"></script>
+  <script
+    src="//cdnjs.cloudflare.com/ajax/libs/bricklayer/0.4.2/plugins/lazyElement/bricklayer.lazyElement.min.js"></script>
+  <script>
+    const bricklayer = new Bricklayer(document.querySelector('.bricklayer'))
+    const images = ['./img/1.jpg', './img/2.jpg', './img/3.jpg', './img/4.jpg', './img/5.jpg', './img/6.jpg', './img/7.jpg', './img/8.jpg', './img/9.jpg', './img/10.jpg']
+
+    images.forEach((item, index) => {
+      bricklayer.appendLazyElement(function (done) {
+        const image = new Image()
+        image.src = item
+        image.classList.add('bounceIn')
+        setTimeout(function () {
+          done(image)
+        }, index*800)
+      })
+    })
+  </script>
+</body>
+</html>
